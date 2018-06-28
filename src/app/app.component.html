@@ -1,61 +1,77 @@
-<h1>Customer Survey</h1>
-<form>
-  <div>
-    <input #qualityForm type="hidden" value="{{quality}}">
-    <label for="quality">Quality</label>
-    <input type="radio" name="quality" value="1" (click)="changeQuality(1)">
-    <input type="radio" name="quality" value="2" (click)="changeQuality(2)">
-    <input type="radio" name="quality" value="3" (click)="changeQuality(3)">
-    <input type="radio" name="quality" value="4" (click)="changeQuality(4)">
-    <input type="radio" name="quality" value="5" (click)="changeQuality(5)">
+<header></header>
+
+<div class="container content"> <!-- container centers content on large screens -->
+  <div class="row">             <!-- responsive row has 12 columns by default -->
+    <div class="col-md-6">      <!-- uses 6 columns on medium and larger screens... -->
+      <h1>Customer Survey</h1>
+      <form>
+        <div>
+          <input #qualityForm type="hidden" value="{{quality}}">
+          <label for="quality">Quality:</label>
+          <input type="radio" name="quality" value="1" (click)="changeQuality(1)">1
+          <input type="radio" name="quality" value="2" (click)="changeQuality(2)">2
+          <input type="radio" name="quality" value="3" (click)="changeQuality(3)">3
+          <input type="radio" name="quality" value="4" (click)="changeQuality(4)">4
+          <input type="radio" name="quality" value="5" (click)="changeQuality(5)">5
+        </div>
+
+        <div>
+          <label #expertiseForm for="Expertise">Expertise:</label>
+          <input type="hidden" value="{{expertise}}">
+          <input type="radio" name="expertise" value="1" (click)="changeExpertise(1)">1
+          <input type="radio" name="expertise" value="2" (click)="changeExpertise(2)">2
+          <input type="radio" name="expertise" value="3" (click)="changeExpertise(3)">3
+          <input type="radio" name="expertise" value="4" (click)="changeExpertise(4)">4
+          <input type="radio" name="expertise" value="5" (click)="changeExpertise(5)">5
+        </div>
+
+        <div>
+          <label #cultureForm for="Culture">Culture:</label>
+          <input type="hidden" value="{{culture}}">
+          <input type="radio" name="culture" value="1" (click)="changeCulture(1)">1
+          <input type="radio" name="culture" value="2" (click)="changeCulture(2)">2
+          <input type="radio" name="culture" value="3" (click)="changeCulture(3)">3
+          <input type="radio" name="culture" value="4" (click)="changeCulture(4)">4
+          <input type="radio" name="culture" value="5" (click)="changeCulture(5)">5
+        </div>
+
+        <label for="comment">Comment:</label>
+        <textarea name="comment" id="comment" #comment></textarea>
+
+        <button type="button" class="btn btn-primary" (click)="commentSurvey(comment)">Submit</button>
+      </form>
+
+    </div>
+    <div class="col-md-6">      <!-- uses 12 columns on smaller than medium screens -->
+      <h1>Customer Survey List</h1>
+      <table class="table">
+        <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Quality</th>
+          <th scope="col">Expertise</th>
+          <th scope="col">Culture</th>
+          <th scope="col">Average</th>
+          <th scope="col">Comment</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let comment of comments" scope="row">
+          <td>{{comment.id}}</td>
+          <td>{{comment.quality}}</td>
+          <td>{{comment.expertise}}</td>
+          <td>{{comment.culture}}</td>
+          <td>{{comment.average}}</td>
+          <td>{{comment.comments}}</td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
   </div>
+</div>
 
-  <div>
-    <label #expertiseForm for="Expertise">Expertise</label>
-    <input type="hidden" value="{{expertise}}">
-    <input type="radio" name="expertise" value="1" (click)="changeExpertise(1)">
-    <input type="radio" name="expertise" value="2" (click)="changeExpertise(2)">
-    <input type="radio" name="expertise" value="3" (click)="changeExpertise(3)">
-    <input type="radio" name="expertise" value="4" (click)="changeExpertise(4)">
-    <input type="radio" name="expertise" value="5" (click)="changeExpertise(5)">
-  </div>
+<footer></footer>
 
-  <div>
-    <label #cultureForm for="Culture">Culture</label>
-    <input type="hidden" value="{{culture}}">
-    <input type="radio" name="culture" value="1" (click)="changeCulture(1)">
-    <input type="radio" name="culture" value="2" (click)="changeCulture(2)">
-    <input type="radio" name="culture" value="3" (click)="changeCulture(3)">
-    <input type="radio" name="culture" value="4" (click)="changeCulture(4)">
-    <input type="radio" name="culture" value="5" (click)="changeCulture(5)">
-  </div>
 
-  <label for="comment">Comment</label>
-  <textarea name="comment" id="comment" #comment></textarea>
 
-  <a href="" (click)="commentSurvey(comment)">Submit</a>
-</form>
 
-<h1>Customer Survey List</h1>
-<table>
-  <thead>
-  <tr>
-    <th>#</th>
-    <th>Quality</th>
-    <th>Expertise</th>
-    <th>Culture</th>
-    <th>Average</th>
-    <th>Comment</th>
-  </tr>
-  </thead>
-  <tbody>
-  <tr *ngFor="let comment of comments">
-    <td>{{comment.id}}</td>
-    <td>{{comment.quality}}</td>
-    <td>{{comment.expertise}}</td>
-    <td>{{comment.culture}}</td>
-    <td>{{comment.average}}</td>
-    <td>{{comment.comments}}</td>
-  </tr>
-  </tbody>
-</table>

@@ -15,6 +15,14 @@ table th,
 table td {
   width: 100px;
 }
-label,a{
+label,a,button{
   display:block;
+}
+textarea{
+  width: 300px;
+  height: 150px;
+}
+input[type="radio"]{
+  margin-left: 20px;
+  margin-right: 5px;
 }
